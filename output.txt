@@ -1,0 +1,27 @@
+Items                                                                                                                                           
+(Neil,52)                                                                                                                                       
+(John,42)                                                                                                                                       
+(Jane,56)                                                                                                                                       
+(Cecily,12)
+
+Get function for key 'Neil' will work as below                                                                                                  
+Value with Key Neil 52                                                                                                                          
+                                                                                                                                                
+Delete function for key 't' which is not present in the Dictionary will work as below                                                           
+Key does not exist                                                                                                                              
+                                                                                                                                                
+Delete function for key 'Neil' which is present in the Dictionary will work as below                                                            
+Deletion successful                                                                                                                             
+Items                                                                                                                                           
+(John,42)                                                                                                                                       
+(Jane,56)                                                                                                                                       
+(Cecily,12)                                                                                                                                     
+                                                                                                                                                
+Union of the directories is                                                                                                                     
+Items                                                                                                                                           
+(John,42)                                                                                                                                       
+(Jane,56)                                                                                                                                       
+(Cecily,12)                                                                                                                                     
+(Chicago,5)                                                                                                                                     
+(NY,15)                                                                                                                                         
+(LA,55)

@@ -28,7 +28,7 @@ class Dictionary{
     public:
     void add(string key,int value){
         if(in(key)){
-            cout<<"Key already there\n";
+            cout<<"Key "<<key<<" already there\n";
         }
         
         else{
@@ -47,17 +47,20 @@ class Dictionary{
     }
     
     void items(){
+        cout<<"Items\n";
         for(int i=0;i<node.size();i++){
             cout<<"("<<node[i]->key<<","<<node[i]->value<<")\n";
         }
     }
     void keys(){
+        cout<<"Keys\n";
         for(int i=0;i<node.size();i++){
             cout<<"["<<node[i]->key<<",";
         }
         cout<<"]\n";
     }
     void values(){
+        cout<<"Values\n";
         for(int i=0;i<node.size();i++){
             cout<<"["<<node[i]->value<<",";
         }
@@ -67,7 +70,7 @@ class Dictionary{
     int get(string k){
         for(int i=0;i<node.size();i++){
             if(node[i]->key==k){
-                cout<<node[i]->value;
+                cout<<"Value with Key "<<k<<" "<<node[i]->value<<endl;
                 return node[i]->value;
             }
         }
@@ -85,20 +88,53 @@ class Dictionary{
         if(!flag)
             cout<<"Key does not exist\n";
     }
+    
+    Dictionary operator+ (Dictionary &dict) {
+    	Dictionary currentDictionary = *this;
+    	Dictionary unionDictionary;
+    	for(int i=0;i<currentDictionary.node.size();i++)
+    		unionDictionary.add(currentDictionary.node[i]->key,currentDictionary.node[i]->value);
+    	for(int i=0;i<dict.node.size();i++) {
+    		if(unionDictionary.in(dict.node[i]->key)) {
+    			cout<<"Key cannot be same !"<<endl;
+    			continue;
+    		}
+    		else
+    			unionDictionary.add(dict.node[i]->key,dict.node[i]->value);
+    	}
+    	return unionDictionary;
+    }
 };
+
 
 int main()
 {
-    Dictionary *d=new Dictionary();
-    d->add("Neil",52);
-    d->add("John",42);
-    d->add("Jane",56);
-    d->add("Cecily",12);
-    d->get("g");
-    d->get("Neil");
-    d->items();
-    d->del("t");
-    d->items();
+    Dictionary *d1=new Dictionary();
+    d1->add("Neil",52);
+    d1->add("John",42);
+    d1->add("Jane",56);
+    d1->add("Cecily",12);
+    d1->get("g");
+    d1->items();
+    cout<<endl;
+    cout<<"Get function for key 'Neil' will work as below"<<endl;
+    d1->get("Neil");
+    cout<<endl;
+    cout<<"Delete function for key 't' which is not present in the Dictionary will work as below"<<endl;
+    d1->del("t");
+    cout<<endl;
+    cout<<"Delete function for key 'Neil' which is present in the Dictionary will work as below"<<endl;
+    d1->del("Neil");
+    d1->items();
+    cout<<endl;
+	
+	Dictionary *d2 = new Dictionary();
+	d2->add("Chicago",5);
+	d2->add("NY",15);
+	d2->add("LA",55);
+	Dictionary unionDirectory = *d1 + *d2;
+	cout<<"Union of the directories is "<<endl;
+	unionDirectory.items();
     
     return 0;
 }
